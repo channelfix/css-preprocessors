@@ -1,6 +1,5 @@
 const gulp = require('gulp')
 const less = require('gulp-less')
-const stylus = require('gulp-stylus')
 
 
 gulp.task('build', () => {
