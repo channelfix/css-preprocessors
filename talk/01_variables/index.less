@@ -1,15 +1,42 @@
+body {
+    color: @body-color;
+
+    .asjdlsjadlajdlkajdsla {
+        @body-color: pink;
+        color: @body-color;
+
+        .b {
+            .c {
+                .e {
+                    background-color: lightblue;
+                }
+            }
+
+            .asdjasdjhkaskdha {
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .ahsdksahd {
+        color: @body-color;
+    }
+}
+
+
 /** basic variables **/
 @body-color: white;
 @main-accent: #00B0FF;
 @sub-accent: #64DD17;
+@string: 'hello';
 
 /** others **/
 // properties
+@property: color;
 // classes
+@class: .hi;
 // referencing other variables @@
+@hello: class;
 // referencing other variables @ : @
+@x: @property;
 // scope
-
-body {
-    property: ;
-}

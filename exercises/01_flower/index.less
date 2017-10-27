@@ -1,0 +1,61 @@
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.ovary {
+    position: relative;
+    background-color: #ec407a;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.petal-circle {
+    background-color: #ec407a;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 7px;
+    height: 7px;
+    font-size: 0;
+    border-radius: 50%;
+}
+
+
+@number_of_circles: 60;
+@circle_angle: 360 / @number_of_circles;
+@main_diameter: 32;
+
+.loop(1);
+.loop(@counter) when (@counter <= @number_of_circles) {
+    @y: sin(@circle_angle * @counter * (pi() / 180)) * @main_diameter;
+    @x: cos(@circle_angle * @counter * (pi() / 180)) * @main_diameter;
+    @animation_name: e( %('anim-%d', @counter) );
+    .petal-circle:nth-child(@{counter}) {
+        transform: translate(unit(@x, px), unit(@y, px));
+        animation: @animation_name 1s ease-in-out infinite;
+        animation-delay: 1s / 10 * @counter;
+    }
+    @keyframes @animation_name {
+        0%, 100% {
+            transform: translate( unit(@x, px), unit(@y, px) );
+            background-color: #ec407a;
+        }
+
+        50% {
+            @farY: @y * 6;
+            @farX: @x * 6;
+            transform: translate( unit(@farX, px), unit(@farY, px) );
+            background-color: hsl( (@counter * @circle_angle), 100%, 60%);
+        }
+    }
+    .loop(@counter + 1);
+}

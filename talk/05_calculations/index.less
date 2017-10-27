@@ -20,12 +20,18 @@ body {
     animation: grow @animation_duration ease-in-out infinite;
 }
 
-@bars: 6;
+@bars: 15;
 @animation_duration: 1.2s;
 @delay: @animation_duration / (@bars + 2);
 
-
-// code here
+.loop(1);
+.loop(@counter) when (@counter <= @bars) {
+    .bar:nth-child(@{counter}) {
+        background-color: hsl( (360 / @bars) * @counter, 100%, 60% );
+        animation-delay: @delay * @counter;
+    }
+    .loop(@counter + 1);
+}
 
 
 @keyframes grow {

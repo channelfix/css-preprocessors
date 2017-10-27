@@ -1,14 +1,33 @@
 
 button {
-    .withComp;
+    // .withComp;
+    .mixin();
+    .mixin(blue);
+    .mixin2;
+    background-color: @var;
+    .function(color);
 }
 
 
 /** mixins **/
 // normal, no param
+.mixin() {
+    color: pink;
+}
 // with param
+.mixin(@x) {
+    color: @x;
+}
 // with variables
+.mixin2 {
+    @var: lightblue;
+}
 // as functions
+.function(@y) {
+    @{y}: "hello";
+}
+
+@var: "hello";
 
 
 /** built-in functions **/
@@ -18,7 +37,29 @@ button {
     // replace(string, pattern, replacement, flags)
     // format
     // literal / css escaping
-    // ceil, floor, percentage, round, sqrt, abs, pi, pow, mod, min
+    // ceil, floor, percentage, round, sqrt, abs, pi, pow, mod, min, max
     // lighten, fade, fadein, fadeOut, darken
-    property:;
+    property: convert(100cm, mm);
+    property: unit(5, px);
+    property: get-unit(5px);
+    property: replace("hello hi what's up", "hello", "Louise");
+    property: %("%d", 1);
+    property: e( %("%d", 1) );
+    property: e( "@{var} hi" );
+    property: ceil(1.2);
+    property: floor(1.2);
+    property: percentage(1.2);
+    property: round(1.2);
+    property: round(1.2128973173, 2);
+    property: abs(-1.2128973173);
+    property: pi();
+    property: pow( pi(), 2 );
+    property: mod(pi(), 2, 10);
+    property: min(1, 2, 3, 4);
+    property: max(1, 2, 3, 4);
+    property: lighten(blue, 10%);
+    property: darken(blue, 20%);
+    property: fade(blue, 20%);
+    property: fadeIn(blue, 20%);
+    property: fadeOut(blue, 20%);
 }

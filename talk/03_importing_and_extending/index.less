@@ -1,5 +1,22 @@
 /** importing **/
-
-
+@import "header";
+@import "../01_variables/index.less";
 
 /** entending **/
+body {
+    property: @var;
+}
+
+
+.className:extend(body .asjdlsjadlajdlkajdsla) {}
+
+
+
+.className2 {
+    &:extend(.className);
+}
+
+
+.className3 {
+    .className2;
+}
