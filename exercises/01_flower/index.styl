@@ -1,0 +1,53 @@
+body
+    background-color #f5f5f5
+    display flex
+    align-items center
+    justify-content center
+    height 100vh
+
+.ovary
+    position relative
+    background-color #ec407a
+    display block
+    width 32px
+    height 32px
+    border-radius 50%
+
+
+.petal-circle
+    background-color white
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    margin auto
+    width 7px
+    height 7px
+    font-size 0
+    border-radius 50%
+
+
+number_of_circles = 50
+circle_angle = 360 / number_of_circles
+main_diameter = 32
+
+for i in (1..number_of_circles)
+    y = sin(circle_angle * i * (PI / 180)) * main_diameter
+    x = cos(circle_angle * i * (PI / 180)) * main_diameter
+
+    .petal-circle:nth-child({i})
+        transform translate(unit(x, 'px'), unit(y, 'px'))
+        animation (anim- + i) 1s ease-in-out infinite
+        animation-delay (1s / 10 * i)
+        // transform translate(unit(x, 'px'), unit(y, 'px'))
+
+    @keyframes anim-{i}
+        0%,
+        100%
+            transform translate(unit(x, 'px'), unit(y, 'px'))
+        50%
+            far_y = y * 6
+            far_x = x * 6
+            transform translate(unit(far_x, 'px'), unit(far_y, 'px'))
+            background-color hsl((i * circle_angle), 100%, 60%)
