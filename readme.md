@@ -8,7 +8,10 @@ A brief look at CSS Preprocessors (i.e. LESS)
  - [gulp](https://gulpjs.com/)
 
 ### Set up
-Install necessary npm packages `npm install`
+Install necessary npm packages `npm install`, and install gulp-cli globally to use gulp in the command line `npm install -g gulp-cli`.
 
 ### Gulp
 Run Gulp as a background compiler `gulp`
+
+### Build
+Run Gulp to compile files once `gulp build`
